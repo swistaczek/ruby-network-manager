@@ -24,7 +24,6 @@ class NetworkManager
     @mm_object  ||= @mm_service.object(@modem_bus_path)
     @mm_object.introspect
 
-    @devices = []
     NetworkManager::Modem.fetch(@mm_object.EnumerateDevices(), service: @mm_service)
   end
 
