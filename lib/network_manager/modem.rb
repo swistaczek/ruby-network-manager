@@ -83,7 +83,7 @@ class NetworkManager
     end
 
     def inspect
-      "#<NetworkManager::Modem##{object_id} #{vendor} #{model} #{version} >"
+      "#<NetworkManager::Modem##{object_id} Imie: #{imei} Device: #{vendor} #{model} #{version} >"
     end
 
     class << self
