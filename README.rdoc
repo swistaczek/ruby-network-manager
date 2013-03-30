@@ -5,7 +5,7 @@ This gem is simple binding for NetworkManager that aims to be tool for managing 
 == Instalation
 Using **bundler** add ruby-network-manager to your gemfile
 
-```gem 'ruby-network-manager', git: 'git://github.com/swistaczek/ruby-network-manager.git'```
+    gem 'ruby-network-manager', git: 'git://github.com/swistaczek/ruby-network-manager.git'
 
 == Contributing to ruby-network-manager
  
