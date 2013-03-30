@@ -7,7 +7,15 @@ Using *bundler* add **ruby-network-manager** to your gemfile
 
     gem 'ruby-network-manager', git: 'git://github.com/swistaczek/ruby-network-manager.git'
 
-== Contributing to ruby-network-manager
+== Usage
+To fetch all available modems call:
+
+    @network_mgr = NetworkManager.new
+    @devices = @network_mgr.modem_devices
+
+*modem_devices** method returns array of *NetworkManager::Modem#Object*.
+
+== Contributing to ruby-network-manager 
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
