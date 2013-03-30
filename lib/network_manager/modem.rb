@@ -85,7 +85,7 @@ class NetworkManager::Modem
     def fetch(paths_array, opts = {})
       devices = []
       paths_array.compact.reject {|x| x && x.size <= 0 }.each do |path|
-        devices << self.new(opts.merge({bus_path: path}) unless path.nil?
+        devices << self.new(opts.merge({bus_path: path}))
       end
       devices
     end
