@@ -1,6 +1,11 @@
 = ruby-network-manager
 
-Description goes here.
+This gem is simple binding for NetworkManager that aims to be tool for managing network interfaces such as 3G modems. 
+
+== Instalation
+Using **bundler** add ruby-network-manager to your gemfile
+
+```gem 'ruby-network-manager', git: 'git://github.com/swistaczek/ruby-network-manager.git'```
 
 == Contributing to ruby-network-manager
  
@@ -16,4 +21,3 @@ Description goes here.
 
 Copyright (c) 2013 Ernest Bursa. See LICENSE.txt for
 further details.
-
