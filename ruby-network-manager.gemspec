@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "ruby-network-manager"
-  s.version = ""
+  s.version = "0.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ernest Bursa"]
@@ -23,9 +23,10 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
+    "VERSION",
     "lib/network_manager/modem.rb",
-    "lib/network_manager/version.rb",
     "lib/ruby-network-manager.rb",
+    "ruby-network-manager.gemspec",
     "test/helper.rb",
     "test/test_ruby-network-manager.rb"
   ]

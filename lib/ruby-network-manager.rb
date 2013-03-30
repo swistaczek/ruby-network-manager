@@ -1,5 +1,4 @@
 # encoding: utf-8
-require 'network_manager/version'
 require 'network_manager/modem'
 
 class NetworkManager
@@ -17,8 +16,7 @@ class NetworkManager
   def devices(opts = {})
     @devices = []
     @mm_object.introspect
-    @mm_object.EnumerateDevices()
-    
+    NetworkManager::Modem.fetch(@mm_object.EnumerateDevices())
   end
 
   class << self

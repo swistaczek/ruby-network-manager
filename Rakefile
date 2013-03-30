@@ -44,7 +44,7 @@ task :default => :test
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
-  version = NetworkManager::VERSION::STRING
+  version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "ruby-network-manager #{version}"

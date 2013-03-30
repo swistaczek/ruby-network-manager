@@ -12,7 +12,7 @@ class NetworkManager::Modem
     def fetch(paths_array)
       devices = []
       paths_array.each do |path|
-        devices << self.new(bus_path: path)
+        devices << self.new(bus_path: path) unless path.nil?
       end
       devices
     end
