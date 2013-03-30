@@ -7,7 +7,7 @@ class NetworkManager
       opts.each do |k,v|
         instance_variable_set("@#{k}", v) unless v.nil?
       end
-      
+
       # Set DBUS proxy
       @proxy = @service.object(@bus_path)
       @proxy.introspect

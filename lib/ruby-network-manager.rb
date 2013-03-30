@@ -1,4 +1,5 @@
 # encoding: utf-8
+require 'dbus'
 require 'network_manager/modem'
 
 class NetworkManager
