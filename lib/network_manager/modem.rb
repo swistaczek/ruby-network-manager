@@ -82,6 +82,10 @@ class NetworkManager
       @network.Scan[0] rescue nil
     end
 
+    def inspect
+      "#<NetworkManager::Modem##{object_id} #{vendor} #{model} #{version} >"
+    end
+
     class << self
       def fetch(paths_array, opts = {})
         devices = []
