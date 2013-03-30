@@ -35,7 +35,7 @@ class NetworkManager
     end
 
     def enable!
-      @modem.Enable(true) if disabled?
+      @modem.Enable(true) == [] if disabled?
     end
 
     def disabled?
@@ -43,7 +43,7 @@ class NetworkManager
     end
 
     def disable!
-      @modem.Enable(false) if enabled?
+      @modem.Enable(false) == [] if enabled?
     end
 
     def model
