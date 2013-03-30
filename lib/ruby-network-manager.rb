@@ -37,7 +37,7 @@ class NetworkManager
     @modem_service  ||= MM_DBUS_SERVICE || 'org.freedesktop.ModemManager'
     @modem_bus_path ||= '/org/freedesktop/ModemManager'
 
-    args.each do |k,v|
+    opts.each do |k,v|
       instance_variable_set("@#{k}", v) unless v.nil?
     end
   end

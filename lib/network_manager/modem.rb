@@ -3,8 +3,8 @@ class NetworkManager
   class Modem
     attr_reader :bus_path, :service
 
-    def initialize(opts)
-      args.each do |k,v|
+    def initialize(opts = {})
+      opts.each do |k,v|
         instance_variable_set("@#{k}", v) unless v.nil?
       end
       
