@@ -83,7 +83,8 @@ class NetworkManager
     end
 
     def send_ussd(message)
-      binding.pry
+      @ussd.Cancel
+      @ussd.Initiate(message)
     end
 
     def inspect
