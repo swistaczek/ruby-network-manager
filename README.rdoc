@@ -13,7 +13,7 @@ To fetch all available modems call:
     @network_mgr = NetworkManager.new
     @devices = @network_mgr.modem_devices
 
-*modem_devices** method returns array of *NetworkManager::Modem#Object*.
+*modem_devices* method returns array of *NetworkManager::Modem#Object*.
 
 == Contributing to ruby-network-manager 
  
