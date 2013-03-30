@@ -8,7 +8,7 @@ class NetworkManager::Modem
     end
     
     # Set DBUS proxy
-    @proxy = @mm_service.object(@bus_path)
+    @proxy = @service.object(@bus_path)
     @proxy.introspect
 
     @properties = @proxy.dup
