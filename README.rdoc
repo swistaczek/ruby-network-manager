@@ -9,7 +9,8 @@ Using *bundler* add *ruby-network-manager* to your gemfile
 
 == Usage
 To fetch all available modems call:
-
+  
+    require 'ruby-network-manager'
     @network_mgr = NetworkManager.new
     @devices = @network_mgr.modem_devices
 
