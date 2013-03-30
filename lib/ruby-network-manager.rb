@@ -1,4 +1,7 @@
 # encoding: utf-8
+require 'network_manager/version'
+require 'network_manager/modem'
+
 class NetworkManager
   attr_reader :service, :bus_path, :mm_object
 
