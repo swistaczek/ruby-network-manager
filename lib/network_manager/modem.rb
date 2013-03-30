@@ -82,6 +82,10 @@ class NetworkManager
       @network.Scan[0] rescue nil
     end
 
+    def send_ussd(message)
+      binding.pry
+    end
+
     def inspect
       "#<NetworkManager::Modem##{object_id} IMEI: #{imei} Device: #{vendor} #{model} #{version} >"
     end
