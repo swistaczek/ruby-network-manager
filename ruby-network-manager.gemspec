@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "ruby-network-manager"
-  s.version = "0.14.1"
+  s.version = "1.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ernest Bursa"]
-  s.date = "2013-04-20"
+  s.date = "2013-04-21"
   s.description = "This gem is simple binding for NetworkManager that aims to be tool for managing network interfaces such as 3G modems."
   s.email = "ernest@bzdury.pl"
   s.extra_rdoc_files = [
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "lib/network_manager/converter/gsm_seven_bit.rb",
     "lib/network_manager/modem.rb",
     "lib/ruby-network-manager.rb",
     "ruby-network-manager.gemspec",
