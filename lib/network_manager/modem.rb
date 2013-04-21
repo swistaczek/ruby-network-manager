@@ -77,6 +77,9 @@ class NetworkManager
       rsp = case ussd_state
       when 'idle'
         @ussd.Initiate(message)
+      when 'active'
+        @ussd.Cancel
+        @ussd.Initiate(message)
       when 'user-response'
         @ussd.Respond(message)
       end
@@ -98,7 +101,11 @@ class NetworkManager
     end
 
     def inspect
-      "#<NetworkManager::Modem##{object_id} #{enabled? ? 'enabled' : 'disabled'} IMEI: #{imei} Device: #{vendor} #{model} #{version} USSD_STATE: #{ussd_state}>"
+      if enabled?
+        "#<NetworkManager::Modem##{object_id} IMEI: #{imei} Device: #{vendor} #{model} #{version} USSD_STATE: #{ussd_state}>"
+      else
+        "#<NetworkManager::Modem##{object_id} DISABLED Device: #{vendor} #{model} #{version}"
+      end
     end
 
     class << self
