@@ -90,9 +90,11 @@ class NetworkManager
 
     def device
       {
+        model: model,
         port: @properties[MM_DBUS_INTERFACE_MODEM]['Device'],
         unlock_required: @properties[MM_DBUS_INTERFACE_MODEM]['UnlockRequired'],
-        master_device: @properties[MM_DBUS_INTERFACE_MODEM]['MasterDevice']
+        master_device: @properties[MM_DBUS_INTERFACE_MODEM]['MasterDevice'],
+        dbus_path: @bus_path
       }
     end
 
@@ -106,6 +108,17 @@ class NetworkManager
       else
         "#<NetworkManager::Modem##{object_id} DISABLED Device: #{vendor} #{model} #{version}"
       end
+    end
+
+    def to_h
+      {
+        imei: imei,
+        imsi: imsi,
+        signal: signal,
+        operator_code: operator_code, 
+        device: device,
+        status: (enabled? ? :enabled : :disabled )
+      }
     end
 
     class << self
