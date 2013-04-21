@@ -8,6 +8,11 @@ class NetworkManager
         instance_variable_set("@#{k}", v) unless v.nil?
       end
 
+      unless defined?(@service)
+        @bus        = DBus::SystemBus.instance
+        @service    ||= @bus[NetworkManager::MM_DBUS_SERVICE]      
+      end
+      
       # Set DBUS proxy
       @proxy = @service.object(@bus_path)
       @proxy.introspect

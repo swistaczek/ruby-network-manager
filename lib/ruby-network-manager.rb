@@ -5,6 +5,7 @@ require 'network_manager/modem'
 class NetworkManager
   attr_reader :modem_service, :modem_bus_path
 
+  MODEM_MANAGER_BUS_PATH              = '/org/freedesktop/ModemManager'
   DBUS_PROPERTIES                     = 'freedesktop.DBus.Properties'
   MM_DBUS_SERVICE                     = 'org.freedesktop.ModemManager'
   MM_DBUS_INTERFACE_MODEM             = 'org.freedesktop.ModemManager.Modem'
@@ -35,8 +36,8 @@ class NetworkManager
   protected
 
   def set_options(opts = {})
-    @modem_service  ||= MM_DBUS_SERVICE || 'org.freedesktop.ModemManager'
-    @modem_bus_path ||= '/org/freedesktop/ModemManager'
+    @modem_service  ||= MM_DBUS_SERVICE
+    @modem_bus_path ||= MODEM_MANAGER_BUS_PATH
 
     opts.each do |k,v|
       instance_variable_set("@#{k}", v) unless v.nil?
