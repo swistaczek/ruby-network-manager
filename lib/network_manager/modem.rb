@@ -12,7 +12,7 @@ class NetworkManager
         @bus        = DBus::SystemBus.instance
         @service    ||= @bus[NetworkManager::MM_DBUS_SERVICE]      
       end
-      
+
       # Set DBUS proxy
       @proxy = @service.object(@bus_path)
       @proxy.introspect
@@ -125,6 +125,8 @@ class NetworkManager
         status: (enabled? ? :enabled : :disabled )
       }
     end
+
+    alias :dbus_path :bus_path
 
     class << self
       def fetch(paths_array, opts = {})
