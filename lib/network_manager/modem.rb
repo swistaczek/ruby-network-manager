@@ -24,16 +24,6 @@ class NetworkManager
       @device_info = @properties.GetInfo[0] rescue nil
     end
 
-    def enabled?
-      begin
-        status
-        return true
-      rescue => e
-        return !e.message.include?('device is not enabled')
-      end
-      nil
-    end
-
     def enable!
       @modem.Enable(true) == [] if disabled?
     end
@@ -51,8 +41,9 @@ class NetworkManager
     end
 
     def status
-      @s_modem.GetStatus[0]
+      @properties['org.freedesktop.ModemManager.Modem']['Enabled']
     end
+    alias :enabled?, :status
 
     def operator_code
       status["operator_code"] rescue nil
@@ -83,15 +74,31 @@ class NetworkManager
     end
 
     def send_ussd(message)
-      binding.pry
-      @ussd.Cancel
-      @ussd.Initiate(message) do |resp|
-        binding.pry
+      rsp = case ussd_state
+      when 'idle'
+        @ussd.Initiate(message)
+      when 'user-response'
+        @ussd.Respond(message)
       end
+
+      # @ussd.Cancel rescue nil
+      rsp[0] if rsp.is_a?(Array)
+    end
+
+    def device
+      {
+        port: @properties[MM_DBUS_INTERFACE_MODEM]['Device'],
+        unlock_required: @properties[MM_DBUS_INTERFACE_MODEM]['UnlockRequired'],
+        master_device: @properties[MM_DBUS_INTERFACE_MODEM]['MasterDevice']
+      }
+    end
+
+    def ussd_state
+      @properties['org.freedesktop.ModemManager.Modem.Gsm.Ussd']['State']
     end
 
     def inspect
-      "#<NetworkManager::Modem##{object_id} IMEI: #{imei} Device: #{vendor} #{model} #{version} >"
+      "#<NetworkManager::Modem##{object_id} #{enabled? ? 'enabled' : 'disabled'} IMEI: #{imei} Device: #{vendor} #{model} #{version} USSD_STATE: #{ussd_state}>"
     end
 
     class << self
