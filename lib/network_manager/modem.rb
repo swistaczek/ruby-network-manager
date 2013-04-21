@@ -78,7 +78,7 @@ class NetworkManager
       when 'idle'
         @ussd.Initiate(message)
       when 'active'
-        @ussd.Cancel
+        @ussd.Cancel rescue nil
         @ussd.Initiate(message)
       when 'user-response'
         @ussd.Respond(message)
