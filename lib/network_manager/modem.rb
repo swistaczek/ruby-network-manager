@@ -43,7 +43,7 @@ class NetworkManager
     def status
       @properties['org.freedesktop.ModemManager.Modem']['Enabled']
     end
-    alias :enabled?, :status
+    alias :enabled? :status
 
     def operator_code
       status["operator_code"] rescue nil
