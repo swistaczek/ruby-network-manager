@@ -20,7 +20,7 @@ class NetworkManager
   end
 
   # Discover all enabled devices
-  def modem_devices(opts = {})
+  def modems(opts = {})
     @mm_service ||= @bus[@modem_service]
     @mm_object  ||= @mm_service.object(@modem_bus_path)
     @mm_object.introspect
