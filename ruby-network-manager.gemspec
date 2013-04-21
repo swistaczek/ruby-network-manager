@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "ruby-network-manager"
-  s.version = "1.0.2"
+  s.version = "1.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ernest Bursa"]
@@ -24,7 +24,6 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "lib/network_manager/converter/gsm_seven_bit.rb",
     "lib/network_manager/modem.rb",
     "lib/ruby-network-manager.rb",
     "ruby-network-manager.gemspec",
