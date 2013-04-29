@@ -29,9 +29,18 @@ class NetworkManager
     NetworkManager::Modem.fetch(@mm_object.EnumerateDevices()[0], service: @mm_service)
   end
 
-  class << self
+  # def on_device_add(&block)
+  #   @bus        = DBus::SystemBus.instance
+  #   @mm_service = @bus.service('org.freedesktop.ModemManager')
+  #   @mm_object  = @mm_service.object('/org/freedesktop/ModemManager')
+  #   @mm_object.introspect
 
-  end
+  #   @properties = @mm_object.dup
+  #   @properties.default_iface = DBUS_PROPERTIES
+  #   @properties.introspect
+
+  #   @properties.on_signal('DeviceAdded') {|x| puts x}
+  # end
 
   protected
 

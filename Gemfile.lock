@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/swistaczek/ruby-dbus.git
-  revision: 3910ef6295b2502cadffa8008d746e0c93cbebe0
+  remote: git://github.com/mvidner/ruby-dbus.git
+  revision: 617fb1a53a1ade138f1d7845e1937a901c302442
   specs:
     ruby-dbus (0.9.1)
 

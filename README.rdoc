@@ -16,6 +16,23 @@ To fetch all available modems call:
 
 *modem_devices* method returns array of *NetworkManager::Modem#Object*.
 
+Available methods on *NetworkManager::Modem#Object*:
+* status
+* enabled? / disabled?
+* enable! / disable!
+* model
+* operator_code
+* vendor
+* version
+* signal
+* imei
+* imsi
+* scan
+* send_ussd
+* device
+* ussd_state
+* to_h
+
 == Contributing to ruby-network-manager 
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
