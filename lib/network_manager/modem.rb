@@ -1,4 +1,6 @@
 # encoding: utf-8
+require 'pry'
+
 class NetworkManager
   class Modem
     attr_reader :bus_path, :service
@@ -17,7 +19,10 @@ class NetworkManager
       @proxy = @service.object(@bus_path)
       @proxy.introspect
 
-      @properties = @proxy[NetworkManager::DBUS_PROPERTIES]
+      binding.pry rescue nil
+
+      @properties = @proxy.dup
+      @properties.default_iface = NetworkManager::DBUS_PROPERTIES
       @properties.introspect
 
       @s_modem = @proxy[NetworkManager::MM_DBUS_INTERFACE_MODEM_SIMPLE]
