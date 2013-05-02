@@ -5,6 +5,8 @@ class NetworkManager
   class Modem
     attr_reader :bus_path, :service
 
+    class NotValid < StandardError ; end
+
     def initialize(opts = {})
       opts.each do |k,v|
         instance_variable_set("@#{k}", v) unless v.nil?
@@ -19,8 +21,6 @@ class NetworkManager
       @proxy = @service.object(@bus_path)
       @proxy.introspect
 
-      binding.pry rescue nil
-
       @properties = @proxy.dup
       @properties.default_iface = NetworkManager::DBUS_PROPERTIES
       @properties.introspect
@@ -31,6 +31,11 @@ class NetworkManager
       @ussd    = @proxy[NetworkManager::MM_DBUS_INTERFACE_MODEM_GSM_USSD]
 
       @device_info = @properties.GetInfo[0] rescue nil
+      raise NetworkManager::Modem::NotValid unless valid?
+    end
+
+    def valid?
+      @properties.interfaces.size > 0
     end
 
     def enable!
@@ -136,7 +141,11 @@ class NetworkManager
       def fetch(paths_array, opts = {})
         devices = []
         paths_array.compact.reject {|x| x && x.size <= 0 }.each do |path|
-          devices << self.new(opts.merge({bus_path: path}))
+          begin
+            devices << self.new(opts.merge({bus_path: path}))
+          rescue NetworkManager::Modem::NotValid => e 
+            puts "Bus #{path} contains empty object, skipping"
+          end
         end
         devices
       end
