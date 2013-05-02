@@ -17,8 +17,7 @@ class NetworkManager
       @proxy = @service.object(@bus_path)
       @proxy.introspect
 
-      @properties = @proxy.dup
-      @properties.default_iface = NetworkManager::DBUS_PROPERTIES
+      @properties = @proxy[NetworkManager::DBUS_PROPERTIES]
       @properties.introspect
 
       @s_modem = @proxy[NetworkManager::MM_DBUS_INTERFACE_MODEM_SIMPLE]
@@ -46,7 +45,7 @@ class NetworkManager
     end
 
     def status
-      @properties['org.freedesktop.ModemManager.Modem']['Enabled']
+      @properties['org.freedesktop.ModemManager.Modem']['Enabled'] rescue false
     end
     alias :enabled? :status
 
