@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "ruby-network-manager"
-  s.version = "1.0.9"
+  s.version = "1.0.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ernest Bursa"]
-  s.date = "2013-04-29"
+  s.date = "2013-05-02"
   s.description = "This gem is simple binding for NetworkManager that aims to be tool for managing network interfaces such as 3G modems."
   s.email = "ernest@bzdury.pl"
   s.extra_rdoc_files = [
