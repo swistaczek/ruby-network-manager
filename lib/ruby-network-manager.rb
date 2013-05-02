@@ -18,14 +18,13 @@ class NetworkManager
   def initialize(opts = {})
     set_options opts
     @bus        = DBus::SystemBus.instance
+    @mm_service = @bus.service(@modem_service)
+    @mm_object  = @mm_service.object(@modem_bus_path)
   end
 
   # Discover all enabled devices
   def modems(opts = {})
-    @mm_service ||= @bus[@modem_service]
-    @mm_object  ||= @mm_service.object(@modem_bus_path)
     @mm_object.introspect
-
     NetworkManager::Modem.fetch(@mm_object.EnumerateDevices()[0], service: @mm_service)
   end
 

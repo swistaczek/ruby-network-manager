@@ -9,8 +9,8 @@ class NetworkManager
       end
 
       unless defined?(@service)
-        @bus        = DBus::SystemBus.instance
-        @service    ||= @bus[NetworkManager::MM_DBUS_SERVICE]      
+        @bus        ||= DBus::SystemBus.instance
+        @service    = @bus.service(NetworkManager::MM_DBUS_SERVICE) 
       end
 
       # Set DBUS proxy
