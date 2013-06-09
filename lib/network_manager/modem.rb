@@ -1,6 +1,4 @@
 # encoding: utf-8
-require 'pry'
-
 class NetworkManager
   class Modem
     attr_reader :bus_path, :service
